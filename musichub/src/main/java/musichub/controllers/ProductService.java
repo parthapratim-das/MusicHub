@@ -5,7 +5,10 @@ import model.*;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+
+@Repository
 public class ProductService {
 
 	@Autowired
@@ -24,5 +27,13 @@ public class ProductService {
 	public void removeProduct(int id)
 	{
 		this.pdi.deleteProduct(id);
+	}
+	public void update(int id)
+	{
+		this.pdi.updateProduct(id);
+	}
+	public void addPerson(User u)
+	{
+		this.pdi.addNewPerson(u);
 	}
 }

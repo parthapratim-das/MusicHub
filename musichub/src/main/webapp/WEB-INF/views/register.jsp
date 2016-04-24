@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE HTML>
 <<html>
 <HEAD>
@@ -52,26 +55,86 @@
 
 <!-- =============== Registration form coding starts here ================== -->
 <div id="myForm" class="container">
-<form>
-	<div class="form-group">
-        <label for="inputName">Name</label>
-        <input type="name" class="form-control" id="inputName" placeholder="Please enter your name">
-    </div>
-    <div class="form-group">
-        <label for="inputEmail">Email</label>
-        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-    </div>
-    <div class="form-group">
-        <label for="inputPassword">Password</label>
-        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-    </div>
-    <div class="checkbox">
-        <label><input type="checkbox"> Remember me</label>
-    </div>
-    <div class="container">
-    	<button type="submit" class="btn btn-primary">Register</button>
-    </div>
-</form>
+ <c:url var="addAction" value="/register" ></c:url>
+ 
+<form:form action="newuser" commandName="user" method="POST">
+<table class="table">
+    <c:if test="${!empty name}">
+    <tr>
+        <td>
+            <form:label path="id">
+                <spring:message text="ID"/>
+            </form:label>
+        </td>
+        <td>
+            <form:input path="id" readonly="true" size="8" />
+           <!--  <form:hidden path="id" /> -->
+        </td> 
+    </tr>
+    </c:if> 
+    <tr>
+        <td>
+            <form:label path="name">
+                 <spring:message text="Name"/> 
+            </form:label>
+        </td>
+        <td>
+            <form:input path="name" />
+        </td> 
+        <td align="left"><form:errors path="name" cssClass="error"/></td>
+    </tr>
+    <tr>
+        <td>
+            <form:label path="contact">
+                 <spring:message text="Contact No."/> 
+            </form:label>
+        </td>
+        <td>
+            <form:input path="contact" />
+        </td> 
+        <td align="left"><form:errors path="contact" cssClass="error"/></td>
+    </tr>
+    <tr>
+        <td>
+            <form:label path="email">
+                <spring:message text="Email Address"/>
+            </form:label>
+        </td>
+        <td>
+            <form:input path="email" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <form:label path="saddress">
+                <spring:message text="Shipping Address"/>
+            </form:label>
+        </td>
+        <td>
+            <form:input path="saddress" />
+        </td>
+        <td align="left"><form:errors path="saddress" cssClass="error"/></td>
+    </tr>
+    <tr>
+    <tr>
+        <td>
+            <form:label path="baddress">
+                <spring:message text="Billing Address"/>
+            </form:label>
+        </td>
+        <td>
+            <form:input path="baddress" />
+        </td>
+        <td align="left"><form:errors path="baddress" cssClass="error"/></td>
+    </tr>
+        <td colspan="2">
+            <c:if test="${empty name}">
+                <input type="submit" text="Register Me"/>
+            </c:if>
+        </td>
+    </tr>
+</table>  
+</form:form>       
 </div>
 <!-- =============== Form design ends here ================== -->
 

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import model.Product;
+import model.User;
 
 
 @Repository
@@ -42,9 +43,23 @@ public class ProductDAOimpl {
 	{
 		Session session = sessionFactory.getCurrentSession();
         Product p = (Product) session.get(Product.class, new Integer(id));
-        if(null != p){
-            session.delete(p);
-            
-     }
+        if(null != p)
+        {
+            session.delete(p);       
+        }
 	}
+	
+	
+    public void updateProduct(int id) {
+        Session session = this.sessionFactory.getCurrentSession();
+        Product p = (Product) session.get(Product.class, new Integer(id));
+        session.update(p);
+    }
+    
+    public void addNewPerson(User u)
+    {
+    	Session session = sessionFactory.getCurrentSession();
+        session.persist(u);
+    }
+ 
 }

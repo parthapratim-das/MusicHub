@@ -1,5 +1,7 @@
-<!DOCTYPE html>   
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<!DOCTYPE html>   
 <html lang="en"> 
 <head> 
 
@@ -21,6 +23,13 @@
 			href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
 	<script type="text/javascript" 
 			src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+
+<style>
+    .error {
+        color: red; font-weight: bold;
+    }
+</style>
+
 </head>  
 <body>
 
@@ -60,11 +69,11 @@
     Add a Product
 </h1>
 
- <c:url var="addAction" value="/editproduct/add" ></c:url>
+ <c:url var="addAction" value="/addnew" ></c:url>
  
-<form:form action="${addAction}" commandName="product">
-<table id="myTable" class="table table-striped">
-    <c:if test="${!empty products.productName}">
+<form:form action="newproductdetails" commandName="product" method="POST">
+<table class="table">
+    <c:if test="${!empty name}">
     <tr>
         <td>
             <form:label path="id">
@@ -72,56 +81,58 @@
             </form:label>
         </td>
         <td>
-            <form:input path="id" readonly="true" size="8"  disabled="true" />
-            <form:hidden path="id" />
+            <form:input path="id" readonly="true" size="8" />
+           <!--  <form:hidden path="id" /> -->
         </td> 
     </tr>
-    </c:if>
+    </c:if> 
     <tr>
         <td>
-            <form:label path="product.name">Product Name
+            <form:label path="name">Product Name
                  <spring:message text="Name"/> 
             </form:label>
         </td>
         <td>
-            <form:input path="product.productname" />
+            <form:input path="name" />
         </td> 
+        <td align="left"><form:errors path="name" cssClass="error"/></td>
     </tr>
     <tr>
         <td>
-            <form:label path="productDesc">
+            <form:label path="desc">
                 <spring:message text="Description"/>
             </form:label>
         </td>
         <td>
-            <form:input path="productDesc" />
+            <form:input path="desc" />
         </td>
     </tr>
     <tr>
         <td>
-            <form:label path="productPrice">
+            <form:label path="price">
                 <spring:message text="Price"/>
             </form:label>
         </td>
         <td>
-            <form:input path="productPrice" />
+            <form:input path="price" />
         </td>
+        <td align="left"><form:errors path="price" cssClass="error"/></td>
     </tr>
     <tr>
     <tr>
         <td>
-            <form:label path="productCat">
+            <form:label path="category">
                 <spring:message text="Category"/>
             </form:label>
         </td>
         <td>
-            <form:input path="productCat" />
+            <form:input path="category" />
         </td>
+        <td align="left"><form:errors path="category" cssClass="error"/></td>
     </tr>
         <td colspan="2">
-            <c:if test="${empty products.productName}">
-                <input type="submit"
-                    value="<spring:message text="Add Product"/>" />
+            <c:if test="${empty name}">
+                <input type="submit" text="Add Product"/>
             </c:if>
         </td>
     </tr>

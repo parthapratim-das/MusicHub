@@ -46,7 +46,10 @@
             	
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown" id="menuLogin">
+          <li>
+          		<a href="signin">Sign in</a>
+          </li>
+           <!-- <li class="dropdown" id="menuLogin">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
             <div class="dropdown-menu" style="padding:17px;">
               <form class="form" id="formLogin"> 
@@ -55,7 +58,7 @@
                 <button type="button" id="btnLogin" class="btn">Login</button>
               </form>
             </div>
-          </li>
+          </li> --> 
             <li><a href="register">Sign up</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -127,35 +130,11 @@
       </div>
       
       
-      <!-- ======== Modal design for sign in ========= -->
-      
-      <div class="container">
-
-        <div class="modal hide" id="myModal">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">x</button>
-            <h3>Login to MyWebsite.com</h3>
-          </div>
-          <div class="modal-body">
-            <form method="post" action='' name="login_form">
-              <p><input type="text" class="span3" name="eid" id="email" placeholder="Email"></p>
-              <p><input type="password" class="span3" name="passwd" placeholder="Password"></p>
-              <p><button type="submit" class="btn btn-primary">Sign in</button>
-                <a href="#">Forgot Password?</a>
-              </p>
-            </form>
-          </div>
-          <div class="modal-footer">
-            New To MyWebsite.com?
-            <a href="#" class="btn btn-primary">Register</a>
-          </div>
-        </div>
-	</div>
-
+     
 
 <!-- ============= Footer Design ===================== -->	
-<footer class="footer-distributed">
-
+<div class="footer">
+	<div class="footer-text">
 			<div class="footer-right">
 
 				<a href="http://www.facebook.com"><i class="fa fa-facebook"></i></a>
@@ -181,8 +160,8 @@
 
 				<p>Partha Pratim Das &copy; 2016</p>
 			</div>
-
-		</footer>
+	</div>
+</div>
 
 </body>
 

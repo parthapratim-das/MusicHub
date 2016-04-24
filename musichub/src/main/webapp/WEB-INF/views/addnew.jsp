@@ -23,6 +23,13 @@
 			href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
 	<script type="text/javascript" 
 			src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+
+<style>
+    .error {
+        color: red; font-weight: bold;
+    }
+</style>
+
 </head>  
 <body>
 
@@ -88,6 +95,7 @@
         <td>
             <form:input path="name" />
         </td> 
+        <td align="left"><form:errors path="name" cssClass="error"/></td>
     </tr>
     <tr>
         <td>
@@ -108,6 +116,7 @@
         <td>
             <form:input path="price" />
         </td>
+        <td align="left"><form:errors path="price" cssClass="error"/></td>
     </tr>
     <tr>
     <tr>
@@ -119,6 +128,7 @@
         <td>
             <form:input path="category" />
         </td>
+        <td align="left"><form:errors path="category" cssClass="error"/></td>
     </tr>
         <td colspan="2">
             <c:if test="${empty name}">

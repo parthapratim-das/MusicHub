@@ -65,7 +65,7 @@
             <th>Description</th> 
             <th>Category</th>
             <th>Status</th> 
-            <th>Details</th>
+           <!--  <th>Details</th>  -->
           </tr>  
         </thead>  
         <tbody>  
@@ -77,15 +77,15 @@
             <td>${element.desc}</td> 
            <td>${element.category}</td>
            <td>${element.status}</td>
-           <td><a href="acoustic">Delete</a>|<a href="editproduct">Edit</a></td> 
+          <!--  <td><a href="remove/${element.id}">Delete</a>|<a href="editproduct/${element.id}">Edit</a></td>  -->
           </tr>  
  	</c:forEach>
         </tbody>  
       </table>  
       
-     <div class="container">
+     <!-- <div class="container">
      		<a href="addnew"><b>Add New Product</b></b></a>
-     </div>
+     </div>  -->
 
 
 </body>  
