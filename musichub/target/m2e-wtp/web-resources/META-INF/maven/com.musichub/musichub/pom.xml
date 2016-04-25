@@ -7,7 +7,19 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>musichub Maven Webapp</name>
   <url>http://maven.apache.org</url>
-  <dependencies>
+ 
+ 
+ <!--  ============ Common Properties =========== --> 
+  <properties>
+		<jdk.version>1.6</jdk.version>
+		<spring.version>3.2.8.RELEASE</spring.version>
+		<spring.security.version>3.2.3.RELEASE</spring.security.version>
+		<jstl.version>1.2</jstl.version>
+	</properties>
+<!--  =========== Properties ends here =========== -->
+
+  
+<dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -174,7 +186,26 @@
 			</exclusions>
 			<scope>runtime</scope>
 		</dependency>
-	
+		
+		<!-- =========== Spring Security Dependencies ============ -->
+<dependency>
+	<groupId>org.springframework.security</groupId>
+	<artifactId>spring-security-config</artifactId>
+	<version>4.0.4.RELEASE</version>
+</dependency>
+
+
+  <dependency>
+	<groupId>org.springframework.security</groupId>
+	<artifactId>spring-security-core</artifactId>
+	<version>4.0.4.RELEASE</version>
+</dependency>
+
+ <dependency>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-web</artifactId>
+        <version>4.0.4.RELEASE</version>
+    </dependency>
 
 <!--   ==================== Ends Here ============================= -->    
     	<dependency>
@@ -182,10 +213,90 @@
             <artifactId>spring-jdbc</artifactId>
             <version>4.2.5.RELEASE</version>
         </dependency>  
+        
+        <dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
     
     
+    	<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.2.1</version>
+		</dependency>
+		
+		<!--  ==== Hibernate Validation === -->
+		<dependency>
+           <groupId>org.hibernate</groupId>
+           <artifactId>hibernate-validator</artifactId>
+           <version>4.2.0.Final</version>
+       </dependency>
+       <dependency>
+           <groupId>javax.validation</groupId>
+           <artifactId>validation-api</artifactId>
+           <version>1.0.0.GA</version>
+       </dependency>
+	
+	<!-- Hibernate Validator also requires an implementation of the Unified Expression Language (JSR 341) for evaluating dynamic expressions -->
+		
+   	<dependency>
+		<groupId>javax.el</groupId>
+		<artifactId>javax.el-api</artifactId>
+		<version>2.2.4</version>
+	</dependency>
+	<dependency>
+		<groupId>javax.el</groupId>
+		<artifactId>el-api</artifactId>
+		<version>2.2</version>
+	</dependency>
+<!--  Multipart file upload -->	
+	<dependency>
+		<groupId>commons-fileupload</groupId>
+		<artifactId>commons-fileupload</artifactId>
+		<version>1.3.1</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>commons-io</groupId>
+		<artifactId>commons-io</artifactId>
+		<version>2.4</version>
+	</dependency>
+	
+<!--  Multipart file dependencies ends here -->	
+
   </dependencies>
+
+  <!-- ============= Build dependencies ============= -->
+  
   <build>
-    <finalName>musichub</finalName>
+		 <finalName>musichub</finalName>
+		 
+  <!-- ====== This part was added for spring security ===== -->
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>false</downloadJavadocs>
+					<wtpversion>2.0</wtpversion>
+				</configuration>
+			</plugin>
+
+		</plugins>
   </build>
 </project>

@@ -1,8 +1,12 @@
 package musichub.controllers;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import model.Product;
-import model.User;
+import model.Users;
 import musichub.controllers.ProductService;
 
 @Controller
@@ -104,25 +108,26 @@ public class HomeController {
 	}
 	
 	@ModelAttribute("user")
-	public User getUser()
+	public Users getUser()
 	{
-		return new User();
+		return new Users();
 	}
 	@RequestMapping(value="/newuser", method=RequestMethod.POST)
-	public String addUser(@Valid @ModelAttribute("user") User p, BindingResult result)
+	public String addUser(@Valid @ModelAttribute("user") Users p, BindingResult result)
 	{
 		if (result.hasErrors()) {
 			 
 		    return "register";
 		 
-		} else {
+		} else 
+		{
 		 
 	            //new person, add it
-	            this.ps.addPerson(p);
-		
-        
+	           	ps.addPerson(p);
+	           	return "redirect:/index";
+
       }
-		return "redirect:/index";
+		
 	}
 	
 	@RequestMapping("/addnew")
@@ -138,25 +143,54 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value= "/newproductdetails", method = RequestMethod.POST)
-    public String addProduct(@Valid @ModelAttribute("product") Product p, BindingResult result){
-        
-		if (result.hasErrors()) {
+    public String addProduct(@Valid @ModelAttribute("product") Product p, BindingResult result, HttpServletRequest request){
+     
+		  String filename=null;
+		  byte[] bytes;
+		  if(!p.getImage().isEmpty())
+	        {
 			 
-		    return "addnew";
+	            try
+	            {
+	            	bytes=p.getImage().getBytes();
+	                ps.addProduct(p);
+	                System.out.println("Data Inserted");
+	            
+	           
+	        
+	                
+					String path=request.getSession().getServletContext().getRealPath("/resources/images/"+p.getId()+".jpg");
+					System.out.println("Path = "+path);
+					System.out.println("File name = "+p.getImage().getOriginalFilename());
+					File f=new File(path);
+					BufferedOutputStream bs=new BufferedOutputStream(new FileOutputStream(f));
+					bs.write(bytes);
+					bs.close();
+					System.out.println("Image uploaded");
+	            }
+				catch(Exception ex)
+	            {
+	                System.out.println(ex.getMessage());
+	            }
+	        }
+			
+			
+			
+			if (result.hasErrors()) 
+			{
+			 
+				return "addnew";
 		 
-		} else {
+			} 
+			else 
+			{
 		 
-			if(p.getId() == 0){
-	            //new person, add it
+				if(p.getId() == 0){
 	            this.ps.addProduct(p);
+			}
 		}
-		//System.out.println(p.getName());
-        
-      }
-         
-        return "redirect:/adminproducts";
-         
-    }
+		return "redirect:/adminproducts";
+	}
 	
 	@RequestMapping("/remove/{id}")
     public String removePerson(@PathVariable("id") int id){
@@ -172,6 +206,12 @@ public class HomeController {
         //model.addAttribute("product", this.ps.update(id));
         //model.addAttribute("listPersons", this.ps.getAll());
         return "redirect:/productdetails";
+	}
+	
+	@RequestMapping("/details")
+	public String showProductwidimg()
+	{
+		return "viewproductwidimg";
 	}
 	
 }

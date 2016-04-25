@@ -71,7 +71,7 @@
 
  <c:url var="addAction" value="/addnew" ></c:url>
  
-<form:form action="newproductdetails" commandName="product" method="POST">
+<form:form action="newproductdetails" commandName="product" enctype="multipart/form-data" method="POST">
 <table class="table">
     <c:if test="${!empty name}">
     <tr>
@@ -130,6 +130,17 @@
         </td>
         <td align="left"><form:errors path="category" cssClass="error"/></td>
     </tr>
+    <tr>
+    	<td>
+    		<form:label path="image">
+    			<spring:message text="Upload Image"/>
+    		</form:label>
+    	</td>
+    	<td>
+    		<form:input path="image" type="file"/>
+    	</td>
+    </tr>
+    <tr>
         <td colspan="2">
             <c:if test="${empty name}">
                 <input type="submit" text="Add Product"/>

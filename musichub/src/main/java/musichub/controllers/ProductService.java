@@ -1,18 +1,28 @@
 package musichub.controllers;
 
-import dao.ProductDAOimpl;
-import model.*;
+
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+
+import dao.ProductDAOimpl;
+import model.Product;
+import model.Users;
 
 
-@Repository
+
+
+
+@Service
 public class ProductService {
 
 	@Autowired
 	private ProductDAOimpl pdi;
+	
+	//@Autowired
+	//private UserDAOimpl udi;
 	
 	public List<Product> getAll()
 	{
@@ -32,8 +42,8 @@ public class ProductService {
 	{
 		this.pdi.updateProduct(id);
 	}
-	public void addPerson(User u)
+	public int addPerson(Users u)
 	{
-		this.pdi.addNewPerson(u);
+		return this.pdi.addNewPerson(u);
 	}
 }

@@ -14,6 +14,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery.js"></script>
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>  
@@ -49,7 +50,7 @@
           <li class="dropdown">
               		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign in<span class="caret"></span></a>
               		<ul class="dropdown-menu">
-                		<li><a href="#">User</a></li>
+                		<li><a href="signin">User</a></li>
                 		<li><a href="signin">Admin</a></li>
                 	</ul>
                 </li>
@@ -83,20 +84,20 @@
 		<br>
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="resources/images/3.jpg" alt="First Slide">
+				<img src="resources/images/car_1.jpg" alt="First Slide">
 			</div>
 			<div class="item">
-				<img src="resources/images/4.jpg" alt="second Slide">
+				<img src="resources/images/car_2.jpg" alt="second Slide">
 			</div>
 			<div class="item">
-				<img src="resources/images/5.jpg" alt="Third Slide">
+				<img src="resources/images/car_3.jpg" alt="Third Slide">
 			</div>
 			<div class="item">
-				<img src="resources/images/6.jpg" alt="Fourth Slide">
+				<img src="resources/images/car_4.jpg" alt="Fourth Slide">
 			</div>
-			<div class="item">
+			<!-- <div class="item">
 				<img src="resources/images/7.jpg" alt="Fifth Slide">
-			</div>
+			</div> -->
 		</div>
 		<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
 		<a class="carousel-control right" href="#myCarousel" data-slide="prev">&rsaquo;</a>
@@ -114,7 +115,7 @@
           <h2>Guitars</h2>
           <p>The best music happens when you have a personal connection to it. That same philosophy can extend to the instrument you hold in your hands: 
           	if a guitar means something special, you're bound to do great things with it.</p>
-          <p><a class="btn btn-default" href="productdetails" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="productdetails?name=guitar" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" src="resources/images/home-piano.jpg" alt="Generic placeholder image" width="200" height="200">
@@ -122,13 +123,13 @@
           <p>Color is the keyboard, the eyes are the harmonies, the soul is the piano with many strings. The artist is the hand that plays, 
           	touching one key or another, to cause vibrations in the soul.
           </p><br>
-          <p><a class="btn btn-default" href="productdetails" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="productdetails?name=keyboard" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" src="resources/images/home-hphone-mphone.jpg" alt="Generic placeholder image" width="200" height="200">
           <h2>Headphones</h2>
           <p>What all you need to do is to turn your headphones on to put the world around you off</p><br><br><br>
-          <p><a class="btn btn-default" href="productdetails" role="button" href="products" >View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="productdetails?name=microphones" role="button" href="products" >View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
       </center>
@@ -138,35 +139,37 @@
      
 
 <!-- ============= Footer Design ===================== -->	
-<div class="footer">
-	<div class="footer-text">
-			<div class="footer-right">
-
-				<a href="http://www.facebook.com"><i class="fa fa-facebook"></i></a>
-				<a href="http://www.twitter.com"><i class="fa fa-twitter"></i></a>
-				<a href="http://www.linkedin.com"><i class="fa fa-linkedin"></i></a>
-				<a href="http://github.com"><i class="fa fa-github"></i></a>
-
-			</div>
-
-			<div class="footer-left">
-
-				<p class="footer-links">
-					<a href="#">Home</a>
-					·
-					<a href="#">Pricing</a>
-					·
-					<a href="#">About</a>
-					·
-					<a href="#">Faq</a>
-					·
-					<a href="#">Contact</a>
-				</p>
-
-				<p>Partha Pratim Das &copy; 2016</p>
-			</div>
-	</div>
-</div>
+<hr>
+<footer>
+    <div class="footer" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
+                <table>
+                   <tr><td> <h3> Find us at</h3></td></tr>
+                   <tr>
+                   
+                       <td> <li class="social"> <a href="#"> <i class=" fa fa-facebook"></i></a></li></td>
+                        <td><li class="social"> <a href="#"> <i class="fa fa-twitter"></i></a> </li></td>
+                       <td> <li class="social"> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li></td>
+                   
+                    </tr>
+                    </table>
+                </div>
+            </div>
+            <!--/.row--> 
+        </div>
+        <!--/.container--> 
+    </div>
+    <!--/.footer-->
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p class="pull-right"> Copyright © NIIT Ltd. All right reserved. </p>
+        </div>
+    </div>
+    <!--/.footer-bottom--> 
+</footer>
 
 </body>
 

@@ -74,14 +74,14 @@
     </c:if> 
     <tr>
         <td>
-            <form:label path="name">
+            <form:label path="username">
                  <spring:message text="Name"/> 
             </form:label>
         </td>
         <td>
-            <form:input path="name" />
+            <form:input path="username" />
         </td> 
-        <td align="left"><form:errors path="name" cssClass="error"/></td>
+        <td align="left"><form:errors path="username" cssClass="error"/></td>
     </tr>
     <tr>
         <td>
@@ -91,6 +91,17 @@
         </td>
         <td>
             <form:input path="contact" />
+        </td> 
+        <td align="left"><form:errors path="contact" cssClass="error"/></td>
+    </tr>
+     <tr>
+        <td>
+            <form:label path="password">
+                 <spring:message text="Password"/> 
+            </form:label>
+        </td>
+        <td>
+            <form:input path="password" />
         </td> 
         <td align="left"><form:errors path="contact" cssClass="error"/></td>
     </tr>

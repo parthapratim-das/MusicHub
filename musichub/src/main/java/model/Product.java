@@ -1,5 +1,7 @@
 package model;
 
+import java.beans.Transient;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,6 +10,8 @@ import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class Product {
@@ -24,6 +28,8 @@ public class Product {
 		@DecimalMin(value = "1.00", message = "Price can not be less than 1.00 digit ")
 		private double price;
 		private String status;
+		@javax.persistence.Transient
+		private MultipartFile image;
 		
 		
 		public Product()
@@ -90,6 +96,18 @@ public class Product {
 		public void setStatus(String status) {
 			this.status = status;
 		}
+
+
+		public MultipartFile getImage() {
+			return image;
+		}
+
+
+		public void setImage(MultipartFile image) {
+			this.image = image;
+		}
+		
+		
 		
 		
 		

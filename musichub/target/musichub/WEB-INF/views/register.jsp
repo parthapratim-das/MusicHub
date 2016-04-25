@@ -57,7 +57,7 @@
 <div id="myForm" class="container">
  <c:url var="addAction" value="/register" ></c:url>
  
-<form:form action="newuser" commandName="product" method="POST">
+<form:form action="newuser" commandName="user" method="POST">
 <table class="table">
     <c:if test="${!empty name}">
     <tr>
@@ -74,14 +74,36 @@
     </c:if> 
     <tr>
         <td>
-            <form:label path="name">Name
+            <form:label path="username">
                  <spring:message text="Name"/> 
             </form:label>
         </td>
         <td>
-            <form:input path="name" />
+            <form:input path="username" />
         </td> 
-        <td align="left"><form:errors path="name" cssClass="error"/></td>
+        <td align="left"><form:errors path="username" cssClass="error"/></td>
+    </tr>
+    <tr>
+        <td>
+            <form:label path="contact">
+                 <spring:message text="Contact No."/> 
+            </form:label>
+        </td>
+        <td>
+            <form:input path="contact" />
+        </td> 
+        <td align="left"><form:errors path="contact" cssClass="error"/></td>
+    </tr>
+     <tr>
+        <td>
+            <form:label path="password">
+                 <spring:message text="Password"/> 
+            </form:label>
+        </td>
+        <td>
+            <form:input path="password" />
+        </td> 
+        <td align="left"><form:errors path="contact" cssClass="error"/></td>
     </tr>
     <tr>
         <td>
@@ -102,7 +124,7 @@
         <td>
             <form:input path="saddress" />
         </td>
-        <td align="left"><form:errors path="price" cssClass="error"/></td>
+        <td align="left"><form:errors path="saddress" cssClass="error"/></td>
     </tr>
     <tr>
     <tr>
@@ -114,7 +136,7 @@
         <td>
             <form:input path="baddress" />
         </td>
-        <td align="left"><form:errors path="category" cssClass="error"/></td>
+        <td align="left"><form:errors path="baddress" cssClass="error"/></td>
     </tr>
         <td colspan="2">
             <c:if test="${empty name}">

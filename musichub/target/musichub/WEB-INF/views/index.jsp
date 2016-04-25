@@ -46,9 +46,14 @@
             	
           </ul>
           <ul class="nav navbar-nav navbar-right">
-          <li>
-          		<a href="signin">Sign in</a>
-          </li>
+          <li class="dropdown">
+              		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign in<span class="caret"></span></a>
+              		<ul class="dropdown-menu">
+                		<li><a href="signin">User</a></li>
+                		<li><a href="signin">Admin</a></li>
+                	</ul>
+                </li>
+          
            <!-- <li class="dropdown" id="menuLogin">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
             <div class="dropdown-menu" style="padding:17px;">

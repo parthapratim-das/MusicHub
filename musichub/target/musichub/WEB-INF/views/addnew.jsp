@@ -130,6 +130,18 @@
         </td>
         <td align="left"><form:errors path="category" cssClass="error"/></td>
     </tr>
+    <tr>
+    	<td>
+    		<form:label path="image">
+    			<spring:message text="Upload Image"/>
+    		</form:label>
+    	</td>
+    	<td>
+    		<form:input path="image" type="file" name="file" />
+			<input type="submit" value="upload" />
+    	</td>
+    </tr>
+    <tr>
         <td colspan="2">
             <c:if test="${empty name}">
                 <input type="submit" text="Add Product"/>

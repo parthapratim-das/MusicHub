@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import model.Product;
-import model.User;
+import model.Users;
 
 
 @Repository
@@ -56,10 +56,15 @@ public class ProductDAOimpl {
         session.update(p);
     }
     
-    public void addNewPerson(User u)
+    public int addNewPerson(Users u)
     {
-    	Session session = sessionFactory.getCurrentSession();
-        session.persist(u);
+    	u.setEnabled("TRUE");
+    	Session session = sessionFactory.openSession();
+        session.save(u);
+        session.flush();
+        return 1;
     }
+    
+   
  
 }

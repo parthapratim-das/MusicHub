@@ -6,30 +6,26 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/security
     http://www.springframework.org/schema/security/spring-security.xsd">
- 
-
-
 
 <!--  ==== Going to add new code ===== --> 
- <beans:bean id="dbUtil" class="dbutil.DbUtil"
-init-method="initialize">
-<beans:property name="dataSource" ref="dataSource" />
-</beans:bean>
+
 
 <security:http auto-config="true"> 
 
 	<security:intercept-url pattern="/adminproducts/**" access="hasRole('ROLE_ADMIN')" />
+	<security:intercept-url pattern="/orders/**" access="hasRole('ROLE_USER')" />
 	<security:form-login login-page="/signin" default-target-url="/adminproducts" login-processing-url="/perform_login" authentication-failure-url="/loginError"/>
-	<security:csrf disabled="true"/>
+	<security:form-login login-page="/signin" default-target-url="/productdetails" login-processing-url="/perform_login" authentication-failure-url="/loginError"/>
+	<security:csrf disabled="true"/> 
 	</security:http>
  
 <security:authentication-manager>
 
 <security:authentication-provider>
-<security:jdbc-user-service
-data-source-ref="dataSource"
-users-by-username-query="select username,password,enabled from user_authentication where username=?"
-authorities-by-username-query="select u1.username, u2.role from user_authentication u1, user_authorization u2 where u1.user_id = u2.user_id and u1.username =?" />
+  <security:jdbc-user-service data-source-ref="dataSource"
+    users-by-username-query="select username,password,enabled from USERS where username=?"
+    authorities-by-username-query="select u1.username, u2.role from USERS u1, user_authorization u2 where u1.id = u2.user_id and u1.username =?"/>
+
 </security:authentication-provider>
 </security:authentication-manager>
   

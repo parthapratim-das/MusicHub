@@ -52,7 +52,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
             	<li>
-          			Welcome admin
+          			<a href="#">Welcome admin</a>
           		</li>
           		<li>
           			<a href="logout">logout</a>

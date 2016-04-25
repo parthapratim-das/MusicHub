@@ -77,7 +77,7 @@
             <td>${element.desc}</td> 
            <td>${element.category}</td>
            <td>${element.status}</td>
-          <!--  <td><a href="remove/${element.id}">Delete</a>|<a href="editproduct/${element.id}">Edit</a></td>  -->
+           <td><a href="details/${element.id}">Details</a></td> 
           </tr>  
  	</c:forEach>
         </tbody>  
