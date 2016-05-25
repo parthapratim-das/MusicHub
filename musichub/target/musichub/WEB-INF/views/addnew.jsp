@@ -71,7 +71,7 @@
 
  <c:url var="addAction" value="/addnew" ></c:url>
  
-<form:form action="newproductdetails" commandName="product" method="POST">
+<form:form action="newproductdetails" commandName="product" enctype="multipart/form-data" method="POST">
 <table class="table">
     <c:if test="${!empty name}">
     <tr>
@@ -137,8 +137,7 @@
     		</form:label>
     	</td>
     	<td>
-    		<form:input path="image" type="file" name="file" />
-			<input type="submit" value="upload" />
+    		<form:input path="image" type="file"/>
     	</td>
     </tr>
     <tr>

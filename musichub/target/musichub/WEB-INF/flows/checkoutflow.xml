@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
+ 
+	<!--==== Executed when webFlow is triggered =======-->
+	<!-- <on-start>
+	demohandler is java class available through annotated Demohandler.java class.here we are calling it’s initFlow() method.
+	  <evaluate expression="demohandler.initFlow()" result="cartdetails.jsp"/>
+	</on-start> -->
+ 
+	 <!-- if not specified the first view state is the starting state -->
+	<view-state id="start" view="cartdetails.jsp">
+	   <transition on="cartdetailsconfirmed" to="shippingdetails"/>
+	</view-state>
+ 
+	<!--<action-state id="validate">
+		<evaluate expression="demohandler.validateDetails(userBean,messageContext)"></evaluate>
+		<transition on="success" to="confirmDetails" />
+		<transition on="failure" to="start" />
+	</action-state>-->
+ 
+	<view-state id="shippingdetails" view="shippingdetails.jsp" >
+		<transition on="edit" to="editshippingaddress" />
+		<transition on="submit" to="confirmorder" />
+	</view-state>
+	
+	<view-state id="confirmorder" view="confirmorder.jsp" model="model.User">
+		<transition on="cancel" to="home" />
+		<transition on="submit" to="thankyou" />
+	</view-state>
+ 
+	<end-state id="thankyou" view="thankyou.jsp" />
+	<end-state id="toHome" view="externalRedirect:contextRelative:index.jsp" />
+	<end-state id="toCancel" view="externalRedirect:contextRelative:index.jsp" />
+ 
+	<!-- these events are available in every state-->
+	<global-transitions>
+		<transition on="home" to="toHome" />
+		<transition on="cancel" to="toCancel" />
+	</global-transitions>
+
+</flow>

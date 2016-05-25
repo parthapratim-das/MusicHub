@@ -15,12 +15,12 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery.js"></script>
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" 
-			href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
-	<script type="text/javascript" 
-			src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+	<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	
 </head>  
 <body>
 
@@ -53,9 +53,11 @@
          </div>
        </div>
      </nav>
-         <br><br><br>
+         <br><br><br><br><br><br>
          
- <!-- ============== Table with population of data ================= -->        
+ <!-- ============== Table with population of data ================= -->    
+ <div class="container">  
+ 	<form action="viewproductwidimg.jsp" method="get">
        <table id="myTable" class="table table-striped" >  
         <thead>  
           <tr>  
@@ -65,7 +67,7 @@
             <th>Description</th> 
             <th>Category</th>
             <th>Status</th> 
-           <!--  <th>Details</th>  -->
+            <th>Details</th> 
           </tr>  
         </thead>  
         <tbody>  
@@ -77,12 +79,13 @@
             <td>${element.desc}</td> 
            <td>${element.category}</td>
            <td>${element.status}</td>
-           <td><a href="details/${element.id}">Details</a></td> 
+           <td><a href="details?id=${element.id}&name=${element.name}&price=${element.price}&desc=${element.desc}&cat=${element.category}&status=${element.status}">Details</a></td> 
           </tr>  
  	</c:forEach>
         </tbody>  
       </table>  
-      
+     </form>
+ </div>
      <!-- <div class="container">
      		<a href="addnew"><b>Add New Product</b></b></a>
      </div>  -->
@@ -91,9 +94,8 @@
 </body>  
 <script>
 $(document).ready(function(){
-    $('#myTable').dataTable();
+    $('#myTable').dataTable({"oSearch": {"sSearch": "${param.name}"}});
 });
 </script>
 
-</body>
 </html>

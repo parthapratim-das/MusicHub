@@ -1,177 +1,138 @@
-<!DOCTYPE html>   
-<html lang="en"> 
-<head> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="img" value="resources/images" />
+<script src="https://code.jquery.com/jquery.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<title>MyStore</title>
 
-	<meta charset="utf-8">   
-	<title>Home</title>   
-	<link href="/twitter-bootstrap/twitter-bootstrap-v2/docs/assets/css/bootstrap2.2.css" rel="stylesheet">  
-	<link rel="stylesheet" href="demo.css">
-	<link rel="stylesheet" href="footer-distributed.css">
+<style type="text/css">
+.img-hover img {
+    -webkit-transition: all .3s ease; /* Safari and Chrome */
+  	-moz-transition: all .3s ease; /* Firefox */
+  	-o-transition: all .3s ease; /* IE 9 */
+  	-ms-transition: all .3s ease; /* Opera */
+  	transition: all .3s ease;
+}
+.img-hover img:hover {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform:translateZ(0) scale(1.20); /* Safari and Chrome */
+    -moz-transform:scale(1.20); /* Firefox */
+    -ms-transform:scale(1.20); /* IE 9 */
+    -o-transform:translatZ(0) scale(1.20); /* Opera */
+    transform:translatZ(0) scale(1.20);
+}
+  
+  
+.grayscale {
+  -webkit-filter: brightness(1.10) grayscale(100%) contrast(90%);
+  -moz-filter: brightness(1.10) grayscale(100%) contrast(90%);
+  filter: brightness(1.10) grayscale(100%); 
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+	<a href="index.jsp"><img src="resources/images/logo.gif"></a>
+	<div class="text-right">
+		<button type="submit" class="btn btn-default" data-toggle="modal" data-target="#myModal" >Sign in</button>
+		<a href="Register">New User? Sign Up</a>
+	</div>
 	
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-	
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="https://code.jquery.com/jquery.js"></script>
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-</head>  
-<body>  
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index"><b><i>musichub</i></b></a>
+	<div class="modal fade" id="myModal" role="dialog" height="60%">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Lets Get in</h3>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            	<li class="active"><a href="index">Home</a></li>
-            	<li><a href="#about">About</a></li>
-            	<li><a href="#contact">Contact</a></li>
-            	<li class="dropdown">
-              		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products <span class="caret"></span></a>
-              		<ul class="dropdown-menu">
-                		<li><a href="#">Guitar</a></li>
-                		<li><a href="#">Keyboards</a></li>
-                		<li><a href="#">Headphones</a></li>
-                	</ul>
-                </li>
-            	
-            	
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-              		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign in<span class="caret"></span></a>
-              		<ul class="dropdown-menu">
-                		<li><a href="signin">User</a></li>
-                		<li><a href="signin">Admin</a></li>
-                	</ul>
-                </li>
-          
-           <!-- <li class="dropdown" id="menuLogin">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
-            <div class="dropdown-menu" style="padding:17px;">
-              <form class="form" id="formLogin"> 
-                <input name="username" id="username" type="text" placeholder="Username"><br><br> 
-                <input name="password" id="password" type="password" placeholder="Password"><br><br>
-                <button type="button" id="btnLogin" class="btn">Login</button>
-              </form>
-            </div>
-          </li> --> 
-            <li><a href="register">Sign up</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
+        <div class="modal-body">
+          <div class="form-group">
+			<label for="Username" class="col-sm-2 control-label">Username</label>
+			<div class="col-sm-10">
+			<input type="text" class="form-control" id="uname" placeholder="Enter Username">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="Password" class="col-sm-2 control-label">Password</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="password" placeholder="Enter password">
+			</div>
+		</div>
+        </div>
+        <br>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-submit="modal">Submit</button>
+          <button type="button" class="btn" data-dismiss="modal">Close</button>
+        </div>
       </div>
-    </nav>
-	<br><br>
-	<!-- This is for carousal -->
-	
-	<div id="myCarousel" class="carousel slide">
+      
+    </div>
+  </div>
+  
+   <ul class="nav nav-tabs">
+	<li class="active"><a href="#">Home</a></li>
+	<li class="dropdown">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#">Guitars<span class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li><a href="#">Acoustic</a></li>
+			<li><a href="#">Electric</a></li>
+			<li><a href="#">Classical</a></li>
+		</ul>
+	</li>
+	<li class="dropdown">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#">Piano<span class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li><a href="#">Type-1</a></li>
+			<li><a href="#">Type-2</a></li>
+			<li><a href="#">Type-3</a></li>
+			<li><a href="#">Type-4</a></li>
+		</ul>
+	</li>
+	<li><a href="#">Offer Zone</a></li>
+	<div class="text-right">
+	<p><span class="glyphicon glyphicon-earphone"> 91 9038179460</span> </p><p><span class="glyphicon glyphicon-envelope"> info@stopnshop.com</span></p>
+	</div>
+	</ul>		
+</div>
+<div id="myCarousel" class="carousel slide">
 		<ol class="carousel-indicators">
 			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 			<li data-target="#myCarousel" data-slide-to="1"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li>
-			<li data-target="#myCarousel" data-slide-to="3"></li>
-			<li data-target="#myCarousel" data-slide-to="4"></li>
 		</ol>
 		<br>
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="resources/images/car_1.jpg" alt="First Slide">
+				<img src="resources/images/1.jpg" alt="First Slide">
 			</div>
 			<div class="item">
-				<img src="resources/images/car_2.jpg" alt="second Slide">
+				<img src="resources/images/2.jpg" alt="second Slide">
 			</div>
-			<div class="item">
-				<img src="resources/images/car_3.jpg" alt="Third Slide">
-			</div>
-			<div class="item">
-				<img src="resources/images/car_4.jpg" alt="Fourth Slide">
-			</div>
-			<!-- <div class="item">
-				<img src="resources/images/7.jpg" alt="Fifth Slide">
-			</div> -->
+			
 		</div>
 		<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
 		<a class="carousel-control right" href="#myCarousel" data-slide="prev">&rsaquo;</a>
-	</div>
-	
-	<br><br>
-	
-	<div class="container marketing">
+		</div>
 
-      <!-- Three columns of text below the carousel -->
-      <center>
-      <div class="row">
-        <div class="col-lg-4">
-          <img class="img-circle" src="resources/images/home-guitar.jpg" alt="Generic placeholder image" width="200" height="200">
-          <h2>Guitars</h2>
-          <p>The best music happens when you have a personal connection to it. That same philosophy can extend to the instrument you hold in your hands: 
-          	if a guitar means something special, you're bound to do great things with it.</p>
-          <p><a class="btn btn-default" href="productdetails?name=guitar" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="resources/images/home-piano.jpg" alt="Generic placeholder image" width="200" height="200">
-          <h2>Keyboards</h2>
-          <p>Color is the keyboard, the eyes are the harmonies, the soul is the piano with many strings. The artist is the hand that plays, 
-          	touching one key or another, to cause vibrations in the soul.
-          </p><br>
-          <p><a class="btn btn-default" href="productdetails?name=keyboard" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="resources/images/home-hphone-mphone.jpg" alt="Generic placeholder image" width="200" height="200">
-          <h2>Headphones</h2>
-          <p>What all you need to do is to turn your headphones on to put the world around you off</p><br><br><br>
-          <p><a class="btn btn-default" href="productdetails?name=microphones" role="button" href="products" >View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->
-      </center>
-      </div>
-      
-      
-     
 
-<!-- ============= Footer Design ===================== -->	
+<div class="container">
 <hr>
-<footer>
-    <div class="footer" id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
-                <table>
-                   <tr><td> <h3> Find us at</h3></td></tr>
-                   <tr>
-                   
-                       <td> <li class="social"> <a href="#"> <i class=" fa fa-facebook"></i></a></li></td>
-                        <td><li class="social"> <a href="#"> <i class="fa fa-twitter"></i></a> </li></td>
-                       <td> <li class="social"> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li></td>
-                   
-                    </tr>
-                    </table>
-                </div>
-            </div>
-            <!--/.row--> 
-        </div>
-        <!--/.container--> 
-    </div>
-    <!--/.footer-->
-    
-    <div class="footer-bottom">
-        <div class="container">
-            <p class="pull-right"> Copyright © NIIT Ltd. All right reserved. </p>
-        </div>
-    </div>
-    <!--/.footer-bottom--> 
-</footer>
+
+<center>
+	<table class="table">
+		<tr>	
+			<td><a href="guitars"><img src="resources/images/guiter.png" class="img-rounded"></a></td>
+			<td><a href=""><img src="resources/images/audio.png" class="img-rounded"></a></td>
+			<td><a href=""><img src="resources/images/piano.png" class="img-rounded"></a></td>
+		</tr>
+	</table>
+</center>
 
 </body>
-
-
-</html>  
+</html>
